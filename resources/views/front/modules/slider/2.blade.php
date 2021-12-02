@@ -6,7 +6,7 @@
 
   <div class="mySlides">
     <div class="numbertext">2 / 6</div>
-    <img src="https://www.wallpaperflare.com/static/311/774/385/cityscape-usa-night-landscape-wallpaper.jpg" style="width:100%">
+     <img src="https://www.wallpaperflare.com/static/311/774/385/cityscape-usa-night-landscape-wallpaper.jpg" style="width:100%">
   </div>
 
   <div class="mySlides">
