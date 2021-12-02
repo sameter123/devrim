@@ -1,3 +1,4 @@
+<section class="slider_1">
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -6,21 +7,21 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="..." class="d-block w-100" alt="...">
+            <img src="https://lookw.ru/9/978/1566944378-nightcity-22.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
                 <h5>First slide label</h5>
                 <p>Some representative placeholder content for the first slide.</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="..." class="d-block w-100" alt="...">
+            <img src="https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77700309960.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
                 <h5>Second slide label</h5>
                 <p>Some representative placeholder content for the second slide.</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="..." class="d-block w-100" alt="...">
+            <img src="https://www.wallpaperflare.com/static/311/774/385/cityscape-usa-night-landscape-wallpaper.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
                 <h5>Third slide label</h5>
                 <p>Some representative placeholder content for the third slide.</p>
@@ -36,3 +37,5 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
+
+</section>
