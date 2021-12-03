@@ -1,0 +1,32 @@
+<!--
+
+Follow me on
+Dribbble: https://dribbble.com/supahfunk
+Twitter: https://twitter.com/supahfunk
+Codepen: https://codepen.io/supah/
+
+-->
+<div class="split-slideshow">
+  <div class="slideshow">
+    <div class="slider">
+      <div class="item">
+        <img src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-2.jpg" />
+      </div>
+      <div class="item">
+        <img src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-3.jpg" />
+      </div>
+      <div class="item">
+        <img src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-4.jpg" />
+      </div>
+      <div class="item">
+        <img src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-1.jpg" />
+      </div>
+    </div>
+  </div>
+  <div class="slideshow-text">
+    <div class="item">Canyon</div>
+    <div class="item">Desert</div>
+    <div class="item">Erosion</div>
+    <div class="item">Shape</div>
+  </div>
+</div>
