@@ -3,11 +3,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="{{asset(env('ROOT').env('FRONT').env('SLIDER').'1/style.css')}}">
-    <link rel="stylesheet" href="{{asset(env('ROOT').env('FRONT').env('SLIDER').'2/style.css')}}">
-    <link rel="stylesheet" href="{{asset(env('ROOT').env('FRONT').env('SLIDER').'3/style.css')}}">
-    <link rel="stylesheet" href="{{asset(env('ROOT').env('FRONT').env('SLIDER').'4/style.css')}}">
-    <link rel="stylesheet" href="{{asset(env('ROOT').env('FRONT').env('SLIDER').'5/style.css')}}">
-    <link rel="stylesheet" href="{{asset(env('ROOT').env('FRONT').env('SLIDER').'6/style.css')}}">
     <link rel="stylesheet" href="{{asset(env('ROOT').env('FRONT').env('CARDS').'1/style.css')}}">
 
 
