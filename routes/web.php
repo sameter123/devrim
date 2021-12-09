@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +13,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/panel', [HomeController::class, 'index']);
+
 
 Route::get('/', function () {
     return view('front.pages.index');
 });
+Route::get('/giris', function () {
+    return view('back.auth.forgot-password');
+});
+
+?>
+
+
+
