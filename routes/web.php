@@ -23,4 +23,12 @@ Route::get('/cikis', [LoginController::class, 'logout'])->name('cikis');
 
 Route::prefix('panel')->middleware('auth')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('panel');
+
+    foreach (\App\Models\Modules::get() as $module) {
+        if($module->type == 1) {
+            Route::get('/'.$module->slug, [HomeController::class, 'list'])->name($module->slug);
+            Route::get('/'.$module->slug.'-detay/{?id}', [HomeController::class, 'detail'])->name($module->slug.'_detail');
+            Route::post('/'.$module->slug.'-detay', [HomeController::class, 'detail_post'])->name($module->slug.'_detail_post');
+        }
+    }
 });

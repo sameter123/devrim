@@ -18,9 +18,6 @@
                                         <h3 class="">Oturum Aç</h3>
                                         <p>Giriş yapabilmek için lütfen kullanıcı bilgilerinizi girin.</p>
                                     </div>
-                                    <div class="login-separater text-center mb-4"><span>HOŞGELDİNİZ</span>
-                                        <hr/>
-                                    </div>
                                     <div class="form-body">
                                         @if(count($errors) > 0)
                                             <div
@@ -93,7 +90,7 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="d-grid">
-                                                    <button type="submit" class="btn btn-primary"><i
+                                                    <button type="submit" class="btn btn-outline-primary"><i
                                                             class="bx bxs-lock-open"></i>Oturum Aç
                                                     </button>
                                                 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -104,7 +105,48 @@ EOS;
 
     public function login_sms($two_factor)
     {
-        return view('back.auth.login-sms');
+        $user = User::where('two_factor_recovery_codes', $two_factor)->first();
+        $simdiki = date('Y-m-d H:i:s');
+        $dateTimeS = new DateTime($simdiki);
+        $timestampS = $dateTimeS->format('U');
+        $kaydedilen = $user->two_factor_secret_expired;
+        $dateTimeK = new DateTime($kaydedilen);
+        $timestampK = $dateTimeK->format('U');
+        $kalanSaniyeToplam = 300 - ($timestampS - $timestampK);
+        $kalanDakika = floor($kalanSaniyeToplam / 60);
+        $kalanSaniye = $kalanSaniyeToplam - ($kalanDakika * 60);
+        if($kalanSaniyeToplam < 1) {
+            return redirect()->route('giris')->with('error', 'Sms süresi doldu, lütfen tekrar giriş yapın.');
+        }
+        return view('back.auth.login-sms')->with('user', $user);
+    }
+
+    public function login_sms_post(Request $request)
+    {
+        $user = User::where('id', $request->id)->first();
+        $simdiki = date('Y-m-d H:i:s');
+        $dateTimeS = new DateTime($simdiki);
+        $timestampS = $dateTimeS->format('U');
+        $kaydedilen = $user->two_factor_secret_expired;
+        $dateTimeK = new DateTime($kaydedilen);
+        $timestampK = $dateTimeK->format('U');
+        $kalanSaniyeToplam = 300 - ($timestampS - $timestampK);
+        $kalanDakika = floor($kalanSaniyeToplam / 60);
+        $kalanSaniye = $kalanSaniyeToplam - ($kalanDakika * 60);
+        if($kalanSaniyeToplam < 1) {
+            return redirect()->route('giris')->with('error', 'Sms süresi doldu, lütfen tekrar giriş yapın.');
+        }
+
+        if($user->two_factor_secret != $request->code) {
+            return back()->with('error', 'Girmiş olduğunuz kod hatalı.');
+        }
+
+
+        if (Auth::loginUsingId($request->id, $remember = true)) {
+            return redirect()->route('panel');
+        } else {
+            return back()->with('error', 'Giriş esnasında bir sorun meydana geldi.')->with('email', $request->email);
+        }
     }
 
     public function logout()

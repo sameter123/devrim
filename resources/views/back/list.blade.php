@@ -1,4 +1,4 @@
 @extends('back.layouts.app')
 @section('content')
-{{getPageUrl()}}
+    {{var_dump($module)}}
 @endsection

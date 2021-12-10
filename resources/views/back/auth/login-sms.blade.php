@@ -16,11 +16,68 @@
                                 <div class="border p-4 rounded">
                                     <div class="text-center">
                                         <h3 class="">Oturum Aç</h3>
-                                        <p>Giriş yapabilmek için lütfen kullanıcı bilgilerinizi girin.</p>
+                                        <p>Giriş yapabilmek için lütfen size gönderilen sms içerisindeki kodu girin.</p>
                                     </div>
-                                    <div class="login-separater text-center mb-4"><span>HOŞGELDİNİZ</span>
-                                        <hr/>
+
+
+                                    <div
+                                        class="alert border-0 border-start border-5 border-info alert-dismissible fade show py-2">
+                                        <div class="d-flex align-items-center">
+                                            <div class="font-35 text-info"><i class="bx bx-time"></i>
+                                            </div>
+                                            <div class="ms-3">
+                                                <h6 class="mb-0 text-info"></h6>
+                                                <div> Kod geçerlilik süresi: <span id="timer"></span></div>
+                                            </div>
+                                        </div>
                                     </div>
+
+                                    <?php
+                                    $simdiki = date('Y-m-d H:i:s');
+                                    $dateTimeS = new DateTime($simdiki);
+                                    $timestampS = $dateTimeS->format('U');
+                                    $kaydedilen = $user->two_factor_secret_expired;
+                                    $dateTimeK = new DateTime($kaydedilen);
+                                    $timestampK = $dateTimeK->format('U');
+                                    $kalanSaniyeToplam = 300 - ($timestampS - $timestampK);
+                                    $kalanDakika = floor($kalanSaniyeToplam / 60);
+                                    $kalanSaniye = $kalanSaniyeToplam - ($kalanDakika * 60);
+                                    ?>
+                                    <script>
+                                        document.getElementById('timer').innerHTML = {{$kalanDakika}} + ":" + {{$kalanSaniye}};
+                                        startTimer();
+
+                                        function startTimer() {
+                                            var presentTime = document.getElementById('timer').innerHTML;
+                                            var timeArray = presentTime.split(/[:]+/);
+                                            var m = timeArray[0];
+                                            var s = checkSecond((timeArray[1] - 1));
+                                            if (s == 59) {
+                                                m = m - 1
+                                            }
+                                            if(m<0){
+                                                location.href='{{route('giris')}}';
+                                                clearInterval(startTimer());
+                                            }
+                                            document.getElementById('timer').innerHTML =
+                                                m + ":" + s;
+                                            setTimeout(startTimer, 1000);
+                                        }
+
+                                        function checkSecond(sec) {
+                                            if (sec < 10 && sec >= 0) {
+                                                sec = "0" + sec
+                                            }
+                                            ; // add zero in front of numbers < 10
+                                            if (sec < 0) {
+                                                sec = "59"
+                                            }
+                                            ;
+                                            return sec;
+                                        }
+                                    </script>
+
+
                                     <div class="form-body">
                                         @if(count($errors) > 0)
                                             <div
@@ -59,41 +116,18 @@
                                             </div>
                                         @endif
 
-                                        <form method="post" action="{{route('giris_post')}}" class="row g-3">
+                                        <form method="post" action="{{route('girisSms_post')}}" class="row g-3">
                                             @csrf
                                             <div class="col-12">
-                                                <label for="inputEmailAddress" class="form-label">Email
-                                                    Adresiniz</label>
-                                                <input type="email" name="email" class="form-control"
+                                                <label for="inputEmailAddress" class="form-label">Güvenlik Kodu</label>
+                                                <input type="text" name="code" class="form-control"
                                                        id="inputEmailAddress"
-                                                       placeholder="Email Adresinizi Girin" required>
-                                            </div>
-                                            <div class="col-12">
-                                                <label for="inputChoosePassword" class="form-label">Şifreniz</label>
-                                                <div class="input-group" id="show_hide_password">
-                                                    <input type="password" name="password"
-                                                           class="form-control border-end-0"
-                                                           id="inputChoosePassword" placeholder="Şifrenizi Girin"
-                                                           required>
-                                                    <a href="javascript:;" class="input-group-text bg-transparent">
-                                                        <i class='bx bx-hide'></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-check form-switch">
-                                                    <input name="remember" class="form-check-input" type="checkbox"
-                                                           id="flexSwitchCheckChecked" checked>
-                                                    <label class="form-check-label" for="flexSwitchCheckChecked">Beni
-                                                        Hatırla</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 text-end"><a
-                                                    href="{{route('sifremi_unuttum')}}">Şifremi Unuttum ?</a>
+                                                       placeholder="6 haneli kodu girin" required autofocus>
                                             </div>
                                             <div class="col-12">
                                                 <div class="d-grid">
-                                                    <button type="submit" class="btn btn-primary"><i
+                                                    <input type="hidden" name="id" value="{{$user->id}}">
+                                                    <button type="submit" class="btn btn-outline-primary"><i
                                                             class="bx bxs-lock-open"></i>Oturum Aç
                                                     </button>
                                                 </div>
