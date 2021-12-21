@@ -1,5 +1,6 @@
  // tabbed content
  // http://www.entheosweb.com/tutorials/css/tabs.asp
+ AOS.init();
  $(".tab_content").hide();
  $(".tab_content:first").show();
 
