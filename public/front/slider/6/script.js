@@ -2,6 +2,7 @@
  *	Helpers Code
  ********************/
 /**
+ * 
  *  @function   DOMReady
  *
  *  @param callback
@@ -72,6 +73,7 @@ const ProjectAPI = (() => {
         removeClass: removeClass
     };
 })();
+
 
 
 /*********************

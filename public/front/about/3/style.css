@@ -1,0 +1,34 @@
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+section.about_3 {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+section.about_3 .about_img {
+    width: 100%;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+section.about_3 .about_title h2,
+section.about_3 .about_title h5 {
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+section.about_3 .about_title h5::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 55px;
+    background-color: #30455d;
+    margin: 0 auto;
+    margin-top: 13px;
+    margin-bottom: 18px;
+    margin-left: 0px;
+}
